@@ -15,4 +15,10 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+module.exports = {
+  type: "module",
+  nextConfig,
+  images: {
+    domains: ["example-apis.vercel.app"],
+  },
+};
