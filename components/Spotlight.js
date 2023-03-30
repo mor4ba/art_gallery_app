@@ -15,7 +15,8 @@ export default function Spotlight({
   return (
     <div className="spotlight">
       <h1>SPOTLIGHT</h1>
-      <h2>Artist: {spotlight.artist}</h2>
+      <h2>{spotlight.name}</h2>
+      <h3>Artist: {spotlight.artist}</h3>
       <Image
         src={spotlight.imageSource}
         alt={`spotlight-image this Month: ${spotlight.name} by ${spotlight.artist}`}
@@ -25,13 +26,8 @@ export default function Spotlight({
       <FavoriteButton
         onHandleArtPieceInfo={onHandleArtPieceInfo}
         currentSlug={spotlight.slug}
+        isFavorite={isFavorite}
       />
-
-      {isFavorite ? (
-        <span>
-          <Image src={"/../heart.svg"} width="40" height="40" alt="a Heart" />
-        </span>
-      ) : null}
     </div>
   );
 }

@@ -16,7 +16,6 @@ export default function ArtPieceList({
               artPiecesInfo={artPiecesInfo}
               onHandleArtPieceInfo={onHandleArtPieceInfo}
             />
-            ;
           </li>
         );
       })}

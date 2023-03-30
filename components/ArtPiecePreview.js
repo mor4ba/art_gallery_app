@@ -14,7 +14,7 @@ export default function ArtPiecePreview({
 
   return (
     <>
-      <h2>title: {data.name}</h2>
+      <h2>{data.name}</h2>
       <h3>Artist: {data.artist}</h3>
       <Link href={`/art-pieces/${data.slug}`}>
         <Image
@@ -27,12 +27,8 @@ export default function ArtPiecePreview({
       <FavoriteButton
         onHandleArtPieceInfo={onHandleArtPieceInfo}
         currentSlug={data.slug}
+        isFavorite={isFavorite}
       />
-      {isFavorite ? (
-        <span>
-          <Image src={"/../heart.svg"} width="40" height="40" alt="a Heart" />
-        </span>
-      ) : null}
     </>
   );
 }

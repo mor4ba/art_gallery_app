@@ -5,6 +5,8 @@ export default function ReturnArtPiece({
   artData,
   artPiecesInfo,
   onHandleArtPieceInfo,
+  setEntries,
+  entries,
 }) {
   const router = useRouter();
   const { slug } = router.query;
@@ -14,6 +16,8 @@ export default function ReturnArtPiece({
       data={currentArtPiece}
       artPiecesInfo={artPiecesInfo}
       onHandleArtPieceInfo={onHandleArtPieceInfo}
+      entries={entries}
+      setEntries={setEntries}
     />
   );
 }

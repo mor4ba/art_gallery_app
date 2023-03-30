@@ -4,12 +4,16 @@ export default function ArtPiecesPage({
   artData,
   artPiecesInfo,
   onHandleArtPieceInfo,
+  entries,
+  setEntries,
 }) {
   return (
     <ArtPieceList
       data={artData}
       artPiecesInfo={artPiecesInfo}
       onHandleArtPieceInfo={onHandleArtPieceInfo}
+      entries={entries}
+      setEntries={setEntries}
     />
   );
 }

@@ -1,11 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import FavoriteButton from "./FavoriteButton";
+import { ColorBlock } from "./colorBlock.styled";
+import CommentForm from "./CommentForm";
+import { uid } from "uid";
 
 export default function ArtPiece({
   data,
   artPiecesInfo,
   onHandleArtPieceInfo,
+  setEntries,
+  entries,
 }) {
   const info = artPiecesInfo.find((info) => info.slug === data.slug) ?? {
     isFunny: false,
@@ -13,8 +18,11 @@ export default function ArtPiece({
   const { isFavorite } = info;
 
   return (
-    <>
-      <h2>title: {data.name}</h2>
+    <div className="art__single">
+      <Link href={"/art-pieces"} className="button">
+        Back
+      </Link>
+      <h2>{data.name}</h2>
       <h3>Artist: {data.artist}</h3>
       <Image
         src={data.imageSource}
@@ -29,16 +37,31 @@ export default function ArtPiece({
       <FavoriteButton
         onHandleArtPieceInfo={onHandleArtPieceInfo}
         currentSlug={data.slug}
+        isFavorite={isFavorite}
       />
-      {isFavorite ? (
-        <span>
-          <Image src={"/../heart.svg"} width="40" height="40" alt="a Heart" />
-        </span>
-      ) : null}
 
-      <Link href={"/art-pieces"} className="button">
-        Back
-      </Link>
-    </>
+      <div className="art__colors">
+        {data.colors.map((color) => (
+          <li key={uid()}>
+            <ColorBlock hex={color} />
+          </li>
+        ))}
+      </div>
+
+      <CommentForm
+        slug={data.slug}
+        artPiecesInfo={artPiecesInfo}
+        entries={entries}
+        setEntries={setEntries}
+      />
+
+      {/* {current.hasOwnProperty("comments") ? (
+        <section>
+          {current.comments.map((comment) => (
+            <li key={comment.id}>{comment.text}</li>
+          ))}
+        </section>
+      ) : null} */}
+    </div>
   );
 }
