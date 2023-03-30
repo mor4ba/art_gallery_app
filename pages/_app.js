@@ -8,20 +8,7 @@ import { uid } from "uid";
 
 export default function App({ Component, pageProps }) {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
-  const [entry, setEntries] = useState([]);
   const [artPiecesInfo, setArtPiecesInfo] = useState([]);
-
-  function handleArtPieceInfo(slug) {
-    setArtPiecesInfo((artPiecesInfo) => {
-      const info = artPiecesInfo.find((info) => info.slug === slug);
-      if (info) {
-        return artPiecesInfo.map((info) =>
-          info.slug === slug ? { ...info, isFavorite: !info.isFavorite } : info
-        );
-      }
-      return [...artPiecesInfo, { slug, isFavorite: true }];
-    });
-  }
 
   const setUpFormData = (event) => {
     event.preventDefault();
@@ -42,23 +29,37 @@ export default function App({ Component, pageProps }) {
     return obj;
   };
 
-  function setUpEntryList(event, slug) {
-    //retrieve Form data on Submit
-    const data = setUpFormData(event);
-    //add form data as object to "entry" array
-    setEntries([...entry, { ...data, id: uid() }]);
-
-    //add Entry array to "artPieceInfo array"
+  function handleArtPieceInfo(slug) {
     setArtPiecesInfo((artPiecesInfo) => {
       const info = artPiecesInfo.find((info) => info.slug === slug);
       if (info) {
         return artPiecesInfo.map((info) =>
-          info.slug === slug ? { ...info, comments: entry } : info
+          info.slug === slug ? { ...info, isFavorite: !info.isFavorite } : info
         );
       }
-      return [...artPiecesInfo, { slug, isFavorite: false, comments: entry }];
+      return [...artPiecesInfo, { slug, isFavorite: true }];
     });
-    console.log("new ArtPieceInfo: ", artPiecesInfo);
+  }
+
+  function setUpEntryList(event, slug) {
+    //retrieve Form data on Submit
+    const data = setUpFormData(event);
+
+    //add object data to "artPieceInfo array"
+    setArtPiecesInfo((artPiecesInfo) => {
+      const info = artPiecesInfo.find((info) => info.slug === slug);
+      if (info) {
+        return artPiecesInfo.map((info) =>
+          info.slug === slug
+            ? { ...info, comments: [...info.comments, { ...data, id: uid() }] }
+            : info
+        );
+      }
+      return [
+        ...artPiecesInfo,
+        { slug, isFavorite: false, comments: [{ ...data, id: uid() }] },
+      ];
+    });
   }
 
   const { data, isLoading } = useSWR(
@@ -72,6 +73,8 @@ export default function App({ Component, pageProps }) {
   const filteredArtList = data.filter((element) =>
     filteredArt.some((item) => element.slug === item.slug)
   );
+
+  console.log("new:", artPiecesInfo);
   return (
     <>
       <GlobalStyle />
@@ -83,7 +86,6 @@ export default function App({ Component, pageProps }) {
           onHandleArtPieceInfo={handleArtPieceInfo}
           artPiecesInfo={artPiecesInfo}
           favArtData={filteredArtList}
-          entries={entry}
           setEntries={setUpEntryList}
         />
       </SWRConfig>

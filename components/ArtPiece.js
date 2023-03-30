@@ -10,7 +10,6 @@ export default function ArtPiece({
   artPiecesInfo,
   onHandleArtPieceInfo,
   setEntries,
-  entries,
 }) {
   const info = artPiecesInfo.find((info) => info.slug === data.slug) ?? {
     isFunny: false,
@@ -51,17 +50,16 @@ export default function ArtPiece({
       <CommentForm
         slug={data.slug}
         artPiecesInfo={artPiecesInfo}
-        entries={entries}
         setEntries={setEntries}
       />
 
-      {/* {current.hasOwnProperty("comments") ? (
+      {info.hasOwnProperty("comments") ? (
         <section>
-          {current.comments.map((comment) => (
+          {info.comments.map((comment) => (
             <li key={comment.id}>{comment.text}</li>
           ))}
         </section>
-      ) : null} */}
+      ) : null}
     </div>
   );
 }

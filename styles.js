@@ -68,7 +68,6 @@ export default createGlobalStyle`
   button.favorite,
   button  {
     width: fit-content;
-    mmargin: 0 auto;
     padding: 0.5rem 1rem;
     cursor: pointer;
     box-shadow: none;

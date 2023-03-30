@@ -16,7 +16,6 @@ export default function ReturnArtPiece({
       data={currentArtPiece}
       artPiecesInfo={artPiecesInfo}
       onHandleArtPieceInfo={onHandleArtPieceInfo}
-      entries={entries}
       setEntries={setEntries}
     />
   );

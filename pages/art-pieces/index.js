@@ -12,7 +12,6 @@ export default function ArtPiecesPage({
       data={artData}
       artPiecesInfo={artPiecesInfo}
       onHandleArtPieceInfo={onHandleArtPieceInfo}
-      entries={entries}
       setEntries={setEntries}
     />
   );

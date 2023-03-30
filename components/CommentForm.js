@@ -1,7 +1,7 @@
 import Button from "./Button";
 import Label from "./Label";
 
-export default function CommentForm({ artPiecesInfo, setEntries, slug }) {
+export default function CommentForm({ setEntries, slug }) {
   return (
     <form onSubmit={(event) => setEntries(event, slug)}>
       <Label id="input_head" name="input_head" text="Headline" />
