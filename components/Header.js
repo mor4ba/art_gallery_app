@@ -7,6 +7,7 @@ export default function Header() {
         <Link href={"/spotlight"}>Spotlight</Link>
         <Link href={"/"}>Home</Link>
         <Link href={"/art-pieces"}>Pieces</Link>
+        <Link href={"/favorites"}>Favorites</Link>
       </nav>
     </header>
   );

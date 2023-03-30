@@ -16,7 +16,7 @@ const nextConfig = {
 };
 
 module.exports = {
-  type: "module",
+  //type: "module",
   nextConfig,
   images: {
     domains: ["example-apis.vercel.app"],

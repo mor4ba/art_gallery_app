@@ -1,7 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
+import FavoriteButton from "./FavoriteButton";
 
-export default function ArtPiece({ data }) {
+export default function ArtPiece({
+  data,
+  artPiecesInfo,
+  onHandleArtPieceInfo,
+}) {
+  const info = artPiecesInfo.find((info) => info.slug === data.slug) ?? {
+    isFunny: false,
+  };
+  const { isFavorite } = info;
+
   return (
     <>
       <h2>title: {data.name}</h2>
@@ -16,6 +26,16 @@ export default function ArtPiece({ data }) {
         <p>Genre: {data.genre}</p>
         <p>Year: {data.year}</p>
       </div>
+      <FavoriteButton
+        onHandleArtPieceInfo={onHandleArtPieceInfo}
+        currentSlug={data.slug}
+      />
+      {isFavorite ? (
+        <span>
+          <Image src={"/../heart.svg"} width="40" height="40" alt="a Heart" />
+        </span>
+      ) : null}
+
       <Link href={"/art-pieces"} className="button">
         Back
       </Link>
