@@ -1,7 +1,7 @@
 import Image from "next/image";
 import ArtPiecePreview from "./ArtPiecePreview";
 
-export default function ArtPiece({ data }) {
+export default function ArtPieceList({ data }) {
   return (
     <ul>
       {data.map((art) => {

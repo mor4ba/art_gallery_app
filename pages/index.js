@@ -1,4 +1,4 @@
-import ArtPiece from "../components/ArtPieces";
+import ArtPiece from "../components/ArtPieceList";
 import Spotlight from "../components/Spotlight";
 
 export default function HomePage({ artData }) {

@@ -5,6 +5,7 @@ export default function Header() {
     <header>
       <nav>
         <Link href={"/spotlight"}>Spotlight</Link>
+        <Link href={"/"}>Home</Link>
         <Link href={"/art-pieces"}>Pieces</Link>
       </nav>
     </header>
