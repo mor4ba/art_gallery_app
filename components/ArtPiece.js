@@ -32,10 +32,10 @@ export default function ArtPiece({
         height="150"
         alt={`Image to the Art of ${data.name}`}
       />
-      <div className="art__info">
+      <ArtInfo className="art__info">
         <p>Genre: {data.genre}</p>
         <p>Year: {data.year}</p>
-      </div>
+      </ArtInfo>
 
       <FavoriteButton
         onHandleArtPieceInfo={onHandleArtPieceInfo}
@@ -86,6 +86,18 @@ export const ArtColors = styled.div`
         height: 100%;
         width: 100%;
       }
+    }
+  }
+`;
+
+export const ArtInfo = styled.div`
+   {
+    margin-top: 1.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+
+    span {
+      font-weight: 500;
     }
   }
 `;

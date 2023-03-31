@@ -36,5 +36,9 @@ const StyledForm = styled.form`
     textarea {
       margin-bottom: 2rem;
     }
+
+    textarea {
+      padding: 1rem;
+    }
   }
 `;

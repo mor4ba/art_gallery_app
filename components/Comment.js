@@ -23,7 +23,7 @@ const StyledComment = styled.article`
     position: relative;
 
     h2 {
-      font-style: bold;
+      font-weight: 500;
       padding-right: 2.5rem;
     }
 

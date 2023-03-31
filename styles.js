@@ -64,27 +64,6 @@ export default createGlobalStyle`
     width: fit-content;
     gap: 1rem;
 
-    .art__info {
-      margin-top: 1.5rem;
-      font-size: 1.5rem;
-      margin-bottom: 1.25rem;
-      
-      span {
-        font-weight: 500;
-      }
-    }
-
-    a.button {
-      text-decoration: none;
-      color: black; 
-      font-size: 2.5rem;
-      font-family: monospace;
-      text-transform: lowercase;
-      position: absolute;
-      left: 1rem;
-      top: 5.5rem;
-    }
-
     img.artwork {
       width: 100%;
       height: auto;
@@ -93,13 +72,25 @@ export default createGlobalStyle`
     }
   }
 
+  .art__single {
+    margin-top: 3.5rem;
+  }
+
   li {
     list-style: none;
   }
 
   .button.backwards {
-    position: relative;
-
+    top: 7.2rem;   
+    text-decoration: none;
+    color: black; 
+    font-size: 2.5rem;
+    font-family: monospace;
+    text-transform:lowercase;
+    position: absolute;
+    left: 1rem;
+    top: 7.2rem;
+    
     &::before {
       position: relative;
       content: "<";
