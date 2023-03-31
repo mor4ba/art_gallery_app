@@ -8,11 +8,14 @@ export default function ArtPiecesPage({
   setEntries,
 }) {
   return (
-    <ArtPieceList
-      data={artData}
-      artPiecesInfo={artPiecesInfo}
-      onHandleArtPieceInfo={onHandleArtPieceInfo}
-      setEntries={setEntries}
-    />
+    <>
+      <h1>All Pieces</h1>
+      <ArtPieceList
+        data={artData}
+        artPiecesInfo={artPiecesInfo}
+        onHandleArtPieceInfo={onHandleArtPieceInfo}
+        setEntries={setEntries}
+      />
+    </>
   );
 }

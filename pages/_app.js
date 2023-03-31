@@ -3,12 +3,15 @@ import { SWRConfig } from "swr";
 import useSWR from "swr";
 import React from "react";
 import Header from "../components/Header";
-import { useState } from "react";
+
 import { uid } from "uid";
+import useLocalStorageState from "use-local-storage-state";
 
 export default function App({ Component, pageProps }) {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
-  const [artPiecesInfo, setArtPiecesInfo] = useState([]);
+  const [artPiecesInfo, setArtPiecesInfo] = useLocalStorageState("artPieces", {
+    defaultValue: [],
+  });
 
   const setUpFormData = (event) => {
     event.preventDefault();
@@ -51,7 +54,12 @@ export default function App({ Component, pageProps }) {
       if (info) {
         return artPiecesInfo.map((info) =>
           info.slug === slug
-            ? { ...info, comments: [...info.comments, { ...data, id: uid() }] }
+            ? {
+                ...info,
+                comments: info.hasOwnProperty("comments")
+                  ? [...info.comments, { ...data, id: uid() }]
+                  : [{ ...data, id: uid() }],
+              }
             : info
         );
       }
@@ -60,6 +68,7 @@ export default function App({ Component, pageProps }) {
         { slug, isFavorite: false, comments: [{ ...data, id: uid() }] },
       ];
     });
+    console.log("ARTPIECE:", artPiecesInfo);
   }
 
   const { data, isLoading } = useSWR(
@@ -74,7 +83,6 @@ export default function App({ Component, pageProps }) {
     filteredArt.some((item) => element.slug === item.slug)
   );
 
-  console.log("new:", artPiecesInfo);
   return (
     <>
       <GlobalStyle />

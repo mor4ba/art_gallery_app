@@ -9,60 +9,25 @@ export default createGlobalStyle`
     padding: 0;
   }
 
+  #__next {
+    min-height: 100vh;
+  }
+
+  h1 {
+    text-align: center;
+    margin-top: 3.5rem;
+
+  }
+
   body {
     margin: 0;
     font-family: system-ui;
+    padding-bottom: 3.5rem;
+    min-height: 100vh;
   }
 
-  header {
-    width: 100%;
-    padding: 1rem 0;
-    background: lightgrey;
-    
-    nav {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      padding: 0 2rem;
-
-      a {
-        text-decoration: none;
-        color: black;
-        font-size: 1.2rem;
-        font-weight: 600;
-        cursor: pointer;
-      }
-    }
-  }
-
-  ul {
-    display: flex;
-    margin: 0 auto;
-    margin-top: 3rem;
-    flex-direction: column;
-    width: fit-content;
-    gap: 4rem;
-
-    h2, h3 {
-      line-height: 1.4;
-      margin-bottom: 0.5rem;
-    }
-
-     li {
-      display: flex;
-      flex-direction: column;
-      position: relative;
-
-      a img {
-        width: 100%;
-        object-fit: contain;
-        height: auto;
-      }
-
-      a {
-        margin-bottom: 0.5rem;
-      }
-    }
+  h2, h3 {
+    line-height: 1.4;
   }
 
   button.favorite,
@@ -95,14 +60,9 @@ export default createGlobalStyle`
   .spotlight  {
     display: flex;
     margin: 0 auto;
-    margin-top: 3.5rem;
     flex-direction: column; 
     width: fit-content;
     gap: 1rem;
-
-    h2, h3 {
-      line-height: 1.4;
-    }
 
     .art__info {
       margin-top: 1.5rem;
@@ -125,43 +85,26 @@ export default createGlobalStyle`
       top: 5.5rem;
     }
 
-    .art__colors {
-      display: flex;
-      flex-direction: row;
-      gap: 1.5rem;
-
-      li {
-        list-style: none;
-        width: 80px;
-        height: 80px;
-        flex: 1 1 0;
-
-        div {
-          height: 100%;
-          width: 100%;
-        }
-      }
-    }
-
-    img {
+    img.artwork {
       width: 100%;
       height: auto;
       object-fit: contain;
+      box-shadow: 1px 1px 17px -1px black;
     }
   }
 
-  form {
-    display: flex;
-    flex-direction: column;
-    margin-top: 5rem;
-    margin-bottom: 3rem;
+  li {
+    list-style: none;
+  }
 
-    label {
-      margin-bottom: 0.5rem;
-    }
+  .button.backwards {
+    position: relative;
 
-    input, textarea {
-      margin-bottom: 2rem;
+    &::before {
+      position: relative;
+      content: "<";
+      font-size: inherit;
+      margin-right: 0.7rem;
     }
   }
 
